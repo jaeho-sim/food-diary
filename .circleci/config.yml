@@ -12,27 +12,43 @@ jobs: # a collection of steps
           command: 'sudo npm install -g npm@latest'
       - restore_cache: # special step to restore the dependency cache
           # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
-          key: dependency-cache-{{ checksum "./client/package.json" }}
+          keys: 
+            - dependency-cache-{{ checksum "./client/package.json" }}
+            - dependency-cache-{{ checksum "./server/package.json" }}
       - run:
-          name: install-npm-wee
+          name: install-npm-server
+          command: cd server && npm install
+      - save_cache: # special step to save the dependency cache
+          key: dependency-cache-{{ checksum "./server/package.json" }}
+          paths:
+            - ./server/node_modules
+      - run: # run tests
+          name: test-server
+          command: cd server && npm test
+      - run:
+          name: install-npm-client
           command: cd client && npm install
       - save_cache: # special step to save the dependency cache
           key: dependency-cache-{{ checksum "./client/package.json" }}
           paths:
             - ./client/node_modules
       - run: # run tests
-          name: test
+          name: test-client
           command: cd client && npm test
       # - run: # run coverage report
       #     name: code-coverage
       #     command: './node_modules/.bin/nyc report --reporter=text-lcov'
+      - save_cache: # special step to save the dependency cache
+          key: dependency-cache-{{ checksum "./client/package.json" }}
+          paths:
+            - ./client/node_modules
       - store_artifacts: # special step to save test results as as artifact
           # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/ 
-          path: /client/test-results.xml
+          path: test-results.xml
           prefix: tests
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/ 
-          path: /client/coverage
+          path: coverage
           prefix: coverage
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-          path: /client/test-results.xml
+          path: test-results.xml
       # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
