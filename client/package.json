@@ -103,10 +103,6 @@
       "web.jsx",
       "jsx",
       "node"
-    ],
-    "watchPlugins": [
-      "/Users/Sim/Workplace/food-diary/client/node_modules/jest-watch-typeahead/filename.js",
-      "/Users/Sim/Workplace/food-diary/client/node_modules/jest-watch-typeahead/testname.js"
     ]
   },
   "babel": {
@@ -115,7 +111,6 @@
     ]
   },
   "devDependencies": {
-    "jest": "^23.6.0",
-    "jest-watch-typeahead": "^0.2.1"
+    "jest": "^23.6.0"
   }
 }
