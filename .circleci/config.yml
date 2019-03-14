@@ -14,17 +14,17 @@ jobs: # a collection of steps
           # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
           keys: 
             - dependency-cache-{{ checksum "./client/package.json" }}
-            - dependency-cache-{{ checksum "./server/package.json" }}
+            - dependency-cache-{{ checksum "./package.json" }}
       - run:
           name: install-npm-server
-          command: cd server && npm install
+          command: npm install
       - save_cache: # special step to save the dependency cache
-          key: dependency-cache-{{ checksum "./server/package.json" }}
+          key: dependency-cache-{{ checksum "./package.json" }}
           paths:
-            - ./server/node_modules
+            - ./node_modules
       - run: # run tests
           name: test-server
-          command: cd server && npm test
+          command: npm test
       - run:
           name: install-npm-client
           command: cd client && npm install
