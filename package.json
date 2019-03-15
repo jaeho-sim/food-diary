@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node index.js --exec babel-node --presets babel-preset-env",
     "dev": "nodemon index.js --exec babel-node --presets babel-preset-env",
-    "test": "cross-env NODE_ENV=test mocha --recursive",
+    "test": "cross-env NODE_ENV=test mocha server/ --recursive",
     "test:watch": "npm run test -- --watch",
     "test:coverage": "nyc npm run test",
     "heroku-postbuild": "cd client && npm install && npm run build"
@@ -17,7 +17,10 @@
     "ejs": "~2.5.7",
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
-    "morgan": "~1.9.0"
+    "morgan": "~1.9.0",
+    "pg": "^7.8.2",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^5.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
