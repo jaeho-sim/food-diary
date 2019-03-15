@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node index.js --exec babel-node --presets babel-preset-env",
+    "dev": "nodemon index.js --exec babel-node --presets babel-preset-env",
     "test": "echo \"Error: no test specified\"",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },

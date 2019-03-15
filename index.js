@@ -1,12 +1,12 @@
-var express = require('express');
-var path = require('path');
-var http = require('http');
-var logger = require('morgan');
+const express = require('express');
+const path = require('path');
+const http = require('http');
+const logger = require('morgan');
 
 // var indexRouter = require('./routes/index');
-var router = require('./routes');
+const router = require('./routes');
 
-var app = express();
+const app = express();
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
