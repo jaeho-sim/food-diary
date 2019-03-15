@@ -1,18 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const restaurantsController = require('../controllers').restaurants;
 
-/* GET users listing. */
-router.get('/', function (req, res, next) {
-  res.json(
-    [
-      {
-        name: 'name1'
-      },
-      {
-        name: 'name2'
-      }
-    ]
-  );
+router.get('/', (req, res, next) => {
+  return res.status(200).send({
+    message: 'restaurants get all'
+  })
 });
+
+router.post('/add', restaurantsController.create);
 
 module.exports = router;

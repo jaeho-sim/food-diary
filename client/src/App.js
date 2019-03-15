@@ -3,7 +3,7 @@ import './App.css';
 
 class App extends Component {
 
-  state = { data: [] }
+  state = { data: null }
 
   componentDidMount() {
     this.getData();
@@ -11,18 +11,17 @@ class App extends Component {
 
   getData = () => {
     fetch('/api')
-      .then(res => res.json())
-        .then(data => this.setState({ data }));
+      .then(res => {
+        console.log(res.status);
+        return this.setState({ data: res.status })
+      });
   }
+  
   render() {
     const { data } = this.state;
     return (
       <div className="App">
-       {data.map((eachData, index) => 
-          <li key={index}>
-           {index}. {eachData.name}
-          </li>
-        )}
+       {data ? data : 'no data'}
       </div>
     );
   }
