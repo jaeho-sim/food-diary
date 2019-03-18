@@ -1,15 +1,24 @@
 const express = require('express');
 const path = require('path');
-const logger = require('morgan');
-
+// const logger = require('morgan');
 // var indexRouter = require('./routes/index');
 const router = require('./routes');
+require('dotenv').config();
 
 const app = express();
 
+if (process.env.NODE_ENV === 'development') {
+  var cors = require('cors')
+  // var corsOptions = {
+  //   origin: 'http://localhost:3000',
+  //   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  // }
+  app.use(cors());
+}
+
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.use(logger('dev'));
+// app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

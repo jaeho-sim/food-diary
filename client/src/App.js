@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
+require('dotenv').config();
 
 class App extends Component {
 
   state = { data: null }
 
   componentDidMount() {
-    this.getData();
+    this.getData(process.env.NODE_ENV);
   }
 
-  getData = () => {
-    fetch('/api')
-      .then(res => {
-        console.log(res.status);
-        return this.setState({ data: res.status })
+  getData = (env) => {
+    console.log('env: ', env);
+    const domain = env = 'development' ? ' http://192.168.0.14:5000' : '';
+    console.log(`${domain}/api`);
+    fetch(`${domain}/api`)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        return this.setState({ data })
       });
   }
   
@@ -21,7 +26,7 @@ class App extends Component {
     const { data } = this.state;
     return (
       <div className="App">
-       {data ? data : 'no data'}
+       {data ? JSON.stringify(data) : 'no data'}
       </div>
     );
   }
