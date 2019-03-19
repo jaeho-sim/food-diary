@@ -28,13 +28,10 @@ app.use('/api', router);
 // match one above, send back React's index.html file.
 app.get('*', (req, res) => {
   const fs = require('fs');
-  fs.readdirSync('/client/').forEach(file => {
-    console.log('client: ', file);
-  });
-  fs.readdirSync('/client/build/').forEach(file => {
+  fs.readdirSync('./client/build/').forEach(file => {
     console.log('build: ', file);
   });
-  res.sendFile(path.join(__dirname + '/client/build/index.html'));
+  res.sendFile(path.join(__dirname + '/../client/build/index.html'));
   // res.sendFile(path.join(__dirname + '/client/build/static/js/main*.js'));
 });
 
