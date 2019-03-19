@@ -11,7 +11,7 @@
     "test": "cross-env NODE_ENV=test mocha server/ --recursive",
     "test:watch": "npm run test -- --watch",
     "test:coverage": "nyc npm run test",
-    "heroku-postbuild": "sequelize db:migrate && cd client && npm install && npm run build"
+    "heroku-postbuild": "sequelize db:migrate && cd client && npm install --only=dev --no-shrinkwrap && npm install && npm run build"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
