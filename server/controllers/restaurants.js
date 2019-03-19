@@ -14,6 +14,6 @@ module.exports = {
     return Restaurant
       .findAll()
       .then(restaurants => res.status(200).send(restaurants))
-      .then(error => res.status(400).send(error))
+      .catch(error => res.status(400).send(error))
   },
 };
