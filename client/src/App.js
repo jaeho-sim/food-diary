@@ -12,7 +12,7 @@ class App extends Component {
 
   getData = (env) => {
     console.log('env: ', env);
-    const domain = env = 'development' ? ' http://192.168.0.14:5000' : '';
+    const domain = env === 'development' ? ' http://192.168.0.14:5000' : '';
     console.log(`${domain}/api`);
     fetch(`${domain}/api`)
       .then(res => res.json())
