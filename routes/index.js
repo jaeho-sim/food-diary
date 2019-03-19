@@ -15,6 +15,10 @@ router.post('/add', restaurantsController.create);
 router.put('/:restaurantId', restaurantsController.update);
 router.delete('/:restaurantId', restaurantsController.delete);
 
+router.get('/:restaurantId/pictures', picturesController.list);
+router.get('/:restaurantId/pictures/:pictureId', picturesController.get);
 router.post('/:restaurantId/pictures/add', picturesController.create);
+router.put('/:restaurantId/pictures/:pictureId', picturesController.update);
+router.delete('/:restaurantId/pictures/:pictureId', picturesController.delete);
 
 module.exports = router;

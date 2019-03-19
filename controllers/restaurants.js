@@ -65,7 +65,7 @@ module.exports = {
           .update({
             name: req.body.name || restaurant.name
           })
-          .then(() => res.status(200).send(restaurant))
+          .then(updatedRestaurant => res.status(200).send(updatedRestaurant))
           .catch(error => sendError(res, error));
       })
       .catch(error => sendError(res, error));

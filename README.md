@@ -12,3 +12,5 @@ docker run \
   -v "$HOME":/home \
   jenkinsci/blueocean
 ```
+```sequelize model:create --name model_name --attributes title:string,complete:boolean```
+```sequelize migration:create --name name_of_your_migration```
