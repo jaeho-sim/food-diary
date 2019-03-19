@@ -12,7 +12,8 @@ const picturesController = require('../controllers').pictures;
 router.get('/', restaurantsController.list);
 router.get('/:restaurantId', restaurantsController.get);
 router.post('/add', restaurantsController.create);
-router.put('/:restaurantId/edit', restaurantsController.update);
+router.put('/:restaurantId', restaurantsController.update);
+router.delete('/:restaurantId', restaurantsController.delete);
 
 router.post('/:restaurantId/pictures/add', picturesController.create);
 

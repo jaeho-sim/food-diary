@@ -9,7 +9,7 @@ const messageIfNotFound = (res, restaurant) => {
   }
 }
 
-const sendError = (error) => {
+const sendError = (res, error) => {
   console.log('-- error: ', error);
   return res.status(400).send(error);
 }
@@ -21,7 +21,7 @@ module.exports = {
         name: req.body.name,
       })
       .then(restaurant => res.status(201).send(restaurant))
-      .catch(error => sendError(error));
+      .catch(error => sendError(res, error));
   },
 
   list(req, res) {
@@ -33,7 +33,7 @@ module.exports = {
         }]
       })
       .then(restaurants => res.status(200).send(restaurants))
-      .catch(error => sendError(error));
+      .catch(error => sendError(res, error));
   },
 
   get(req, res) {
@@ -48,7 +48,7 @@ module.exports = {
         messageIfNotFound(res, restaurant);
         return res.status(200).send(restaurant);
       })
-      .catch(error => sendError(error));
+      .catch(error => sendError(res, error));
   },
 
   update(req, res) {
@@ -66,8 +66,23 @@ module.exports = {
             name: req.body.name || restaurant.name
           })
           .then(() => res.status(200).send(restaurant))
-          .catch(error => sendError(error));
+          .catch(error => sendError(res, error));
       })
-      .catch(error => sendError(error));
+      .catch(error => sendError(res, error));
+  },
+
+  delete(req, res) {
+    return Restaurant
+      .findByPk(req.params.restaurantId)
+      .then(restaurant => {
+        messageIfNotFound(res, restaurant);
+        return restaurant
+          .destroy()
+          .then(() => res.status(200).send({
+            message: 'Delete success'
+          }))
+          .catch(error => sendError(res, error));
+      })
+      .catch(error => sendError(res, error));
   }
 };
