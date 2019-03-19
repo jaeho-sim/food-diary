@@ -27,10 +27,6 @@ app.use('/api', router);
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('*', (req, res) => {
-  const fs = require('fs');
-  fs.readdirSync('./client/build/').forEach(file => {
-    console.log('build: ', file);
-  });
   res.sendFile(path.join(__dirname + '/../client/build/index.html'));
   // res.sendFile(path.join(__dirname + '/client/build/static/js/main*.js'));
 });

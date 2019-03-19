@@ -6,7 +6,7 @@
   },
   "private": true,
   "scripts": {
-    "start": "node index.js --exec babel-node --presets babel-preset-env",
+    "start": "nodemon index.js --exec babel-node --presets babel-preset-env",
     "start-client": "cd client && npm start",
     "dev": "run-p start start-client",
     "test": "cross-env NODE_ENV=test mocha server/ --recursive",
