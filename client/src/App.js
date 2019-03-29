@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 require('dotenv').config();
 
 class App extends Component {
