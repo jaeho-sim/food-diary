@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import axios from 'axios';
 import TopBar from '../TopBar';
 import RestaurantList from '../RestaurantList';
 
@@ -14,11 +15,14 @@ export class RestaurantsPage extends Component {
     // http://192.168.0.14:5000
     let domain = env === 'development' ? 'http://10.2.37.177:5000' : '';
     console.log(`fetching: ${domain}/api`);
-    fetch(`${domain}/api`)
-      .then(res => res.json())
-      .then(data => {
+    axios.get(`${domain}/api`)
+      .then(res => {
+        const { data } = res;
         console.log('data: ', data);
         return this.setState({ data })
+      })
+      .catch((error) => {
+        console.error('error: ', error);  
       });
   }
 
