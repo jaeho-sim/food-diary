@@ -1,30 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import RestaurantsPage from './components/RestaurantsPage';
 import './App.scss';
 require('dotenv').config();
 
-class App extends Component {
-
-  state = { data: null }
-
-  componentDidMount() {
-    this.getData(process.env.NODE_ENV);
-  }
-
-  getData = (env) => {
-    const domain = env === 'development' ? ' http://192.168.0.14:5000' : '';
-    fetch(`${domain}/api`)
-      .then(res => res.json())
-      .then(data => {
-        return this.setState({ data })
-      });
-  }
-  
+class App extends Component {  
   render() {
-    const { data } = this.state;
     return (
-      <div className="App">
-       {data ? JSON.stringify(data) : 'no data'}
-      </div>
+      <BrowserRouter>
+        <Fragment>
+          <Switch>
+            <Route exact path="/" component={RestaurantsPage} />
+          </Switch>
+        </Fragment>
+      </BrowserRouter>
     );
   }
 }
