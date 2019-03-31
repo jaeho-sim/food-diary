@@ -1,0 +1,15 @@
+@import '../../styles/variable';
+
+.gj-topbar {
+  // box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.1) !important;
+  background-color: #ffffff;
+  box-shadow: 0 20px 50px -18px rgba(0, 0, 0, 0.5) !important;
+  position: fixed !important;
+}
+
+.gj-topbar-content {
+  width: $pageWidth;
+  margin-left: auto;
+  margin-right: auto;
+}
+

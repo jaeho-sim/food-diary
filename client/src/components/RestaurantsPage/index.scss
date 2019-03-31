@@ -1,0 +1,15 @@
+@import '../../styles/flex';
+@import '../../styles/variable';
+
+.gj-restaurants-page {
+  width: 100%;
+  padding: 80px 0;
+  @extend %flex-container;
+  @include flex-wrap(wrap);
+  @include justify-content(space-between);
+}
+
+.gj-restaurants-page::after {
+  content: "";
+  width: $restaurantListWidth;
+}

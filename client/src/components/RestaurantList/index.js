@@ -1,21 +1,23 @@
 import React from 'react';
+import { Icon } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import './index.scss';
 
 const RestaurantList = (props) => {
-  const { name, address, pictures, point, id, author } = props;
+  const { name, address, pictures, rating, id, author } = props;
   return (
     <div className="gj-restaurant-list">
-      <Link to={{
+      {/* <Link to={{
         pathname: `/${id}`
-      }}>
-        <div className="gj-restaurnt-list-image">
-          <img src={pictures[0] ? pictures[0] : ""} alt={name} />
-        </div>
-        <p>{name}</p>
-        <p>{address}</p>
-        <p>{point}</p>
-        <p>{author}</p>
-      </Link>
+      }}> */}
+      <div className="gj-restaurant-list-image" style={{backgroundImage: `url(${pictures[0]})`}} />
+      <div className="gj-restaurant-list-text">
+        <div className="name">{name}</div>
+        <div className="address">{address}</div>
+        <span className="rating">{rating} <Icon className="star-icon">star</Icon></span>
+        <div className="author">{author}</div>
+      </div>
+      {/* </Link> */}
     </div>
   );
 }
