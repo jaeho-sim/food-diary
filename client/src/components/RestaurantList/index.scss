@@ -1,0 +1,82 @@
+@import '../../styles/variable';
+@import '../../styles/font';
+@import "node_modules/react-image-gallery/styles/scss/image-gallery.scss";
+
+.gj-restaurant-list {
+  width: $restaurantListWidth;
+  margin-bottom: 80px;
+  // box-shadow: 18px 18px 22px -10px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 18px 18px 40px -4px rgba(0, 0, 0, 0.15);
+  box-shadow: 18px 18px 40px -4px rgba(0, 0, 0, 0.15);
+
+  @extend %font-roboto;
+
+  .image-gallery {
+    button {
+      visibility: hidden;
+    }
+    &:hover button {
+      visibility: visible;
+    }
+  }
+}
+
+.gj-restaurant-list-text {
+  padding: 20px;
+
+  .name {
+    color: $lightBlack;
+    font-size: 18px;
+  }
+
+  .address {
+    color: $darkGrey;
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 12px;
+  }
+
+  .rating {
+    background-color:$lightGrey;
+    color: $lightBlack;
+    font-size: 16px;
+    padding: 6px;
+    border-radius: 4px;
+  }
+
+  .star-icon {
+    margin-bottom: -5px;
+    font-size: 22px;
+    color: $darkYellow;
+  }
+
+  .author {
+    float: right;
+    font-size: 14px;
+    color: $darkGrey;
+    padding-top: 10px;
+  }
+}
+
+.gj-restaurant-list-image {
+  width: 100%;
+  height: 240px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media only screen and (max-width: 1199px) {
+  .gj-restaurant-list {
+    width: $restaurantListWidthTablet;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .gj-restaurant-list {
+    width: $restaurantListWidthMobile;
+  }
+  .gj-restaurant-list-image {
+    height: 180px;
+  }
+}
