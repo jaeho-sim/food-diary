@@ -55,3 +55,18 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+@media only screen and (max-width: 1199px) {
+  .gj-restaurant-list {
+    width: $restaurantListWidthTablet;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .gj-restaurant-list {
+    width: $restaurantListWidthMobile;
+  }
+  .gj-restaurant-list-image {
+    height: 180px;
+  }
+}

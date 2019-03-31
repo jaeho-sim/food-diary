@@ -13,3 +13,13 @@
   content: "";
   width: $restaurantListWidth;
 }
+
+@media only screen and (max-width: 1199px) {
+
+}
+
+@media only screen and (max-width: 599px) {
+  .gj-restaurants-page {
+    @include justify-content(center);
+  }
+}

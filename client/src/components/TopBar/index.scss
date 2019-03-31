@@ -13,3 +13,13 @@
   margin-right: auto;
 }
 
+
+@media only screen and (max-width: 1199px) {
+  .gj-topbar-content {
+    width: $pageWidthTablet;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+
+}
