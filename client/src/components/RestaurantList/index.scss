@@ -1,5 +1,6 @@
 @import '../../styles/variable';
 @import '../../styles/font';
+@import "node_modules/react-image-gallery/styles/scss/image-gallery.scss";
 
 .gj-restaurant-list {
   width: $restaurantListWidth;
@@ -9,6 +10,15 @@
   box-shadow: 18px 18px 40px -4px rgba(0, 0, 0, 0.15);
 
   @extend %font-roboto;
+
+  .image-gallery {
+    button {
+      visibility: hidden;
+    }
+    &:hover button {
+      visibility: visible;
+    }
+  }
 }
 
 .gj-restaurant-list-text {
